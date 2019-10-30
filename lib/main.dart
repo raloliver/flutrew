@@ -65,13 +65,11 @@ class MainHomePage extends StatelessWidget {
                 double div = num1 / num2;
                 showDialog(
                   context: context,
-                  builder: (context) {
-                    new AlertDialog(
-                      title: new Text('Results'),
-                      content: new Text(
-                          'Results: sum = $sum | sub = $sub | mult $mult | div $div'),
-                    );
-                  },
+                  builder: (context) => new AlertDialog(
+                    title: new Text('Results'),
+                    content: new Text(
+                        'sum = $sum\nsub = $sub\nmult = $mult\ndiv = $div'),
+                  ),
                 );
               },
             ),
