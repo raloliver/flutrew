@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+void main() => runApp(new FlutrewApp());
+
 class FlutrewApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -8,14 +10,13 @@ class FlutrewApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.cyan,
       ),
-      home: ,
+      home: new MainHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class MainPage extends StatelessWidget {
-
+class MainHomePage extends StatelessWidget {
   double num1 = 0.0;
   double num2 = 0.0;
 
@@ -23,26 +24,26 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-      title: new Text('Calc Flutrew'),
-    ),
+        title: new Text('Calc Flutrew'),
+      ),
       body: new Container(
         padding: EdgeInsets.all(20.0),
         child: new Column(
           children: <Widget>[
-          new TextField(
-            decoration: new InputDecoration(
-              labelText: 'Number One',
-            ),
-            keyboardType: TextInputType.number,
-            onChanged: (source) {
+            new TextField(
+              decoration: new InputDecoration(
+                labelText: 'Number One',
+              ),
+              keyboardType: TextInputType.number,
+              onChanged: (source) {
                 try {
                   num1 = double.parse(source);
                 } catch (exc) {
                   num1 = 0.0;
                 }
               },
-            ), 
-          new TextField(
+            ),
+            new TextField(
               decoration: InputDecoration(
                 labelText: 'Number Two',
               ),
@@ -55,7 +56,7 @@ class MainPage extends StatelessWidget {
                 }
               },
             ),
-          new RaisedButton(
+            new RaisedButton(
               child: new Text('Calc'),
               onPressed: () {
                 double sum = num1 + num2;
@@ -63,11 +64,12 @@ class MainPage extends StatelessWidget {
                 double mult = num1 * num2;
                 double div = num1 / num2;
                 showDialog(
-                  context: context, 
+                  context: context,
                   builder: (context) {
                     new AlertDialog(
                       title: new Text('Results'),
-                      content: new Text('Results: sum = $sum | sub = $sub | mult $mult | div $div'),
+                      content: new Text(
+                          'Results: sum = $sum | sub = $sub | mult $mult | div $div'),
                     );
                   },
                 );
