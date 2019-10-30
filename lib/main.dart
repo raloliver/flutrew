@@ -16,7 +16,12 @@ class FlutrewApp extends StatelessWidget {
   }
 }
 
-class MainHomePage extends StatelessWidget {
+class MainHomePage extends StatefulWidget {
+  @override
+  _MainHomePageState createState() => new _MainHomePageState();
+}
+
+class _MainHomePageState extends State<MainHomePage> {
   double num1 = 0.0;
   double num2 = 0.0;
 
