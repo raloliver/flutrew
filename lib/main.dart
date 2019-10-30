@@ -46,6 +46,12 @@ class Flutrew extends StatelessWidget {
         showDialog(context: context, child: resultDialog);
       },
     );
+
+    Container container = new Container(
+      padding: EdgeInsets.all(20.0),
+      child: new Column(
+        children: <Widget>[firstNumInput, secondNumInput, calcButton],
+      ),
+    );
   }
 }
-F
