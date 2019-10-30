@@ -22,8 +22,36 @@ class MainHomePage extends StatefulWidget {
 }
 
 class _MainHomePageState extends State<MainHomePage> {
-  double num1 = 0.0;
-  double num2 = 0.0;
+  double _num1 = 0.0;
+  double _num2 = 0.0;
+  double _sumResult = 0.0;
+  double _subResult = 0.0;
+  double _multResult = 0.0;
+  double _divResult = 0.0;
+
+  void _setNum1(String source) {
+    setState(() {
+      try {
+        _num1 = double.parse(source);
+        _sumResult = _num1 + _num2;
+        _subResult = _num1 - _num2;
+        _multResult = _num1 * _num2;
+        _divResult = _num1 / _num2;
+      } catch (exc) {}
+    });
+  }
+
+  void _setNum2(String source) {
+    setState(() {
+      try {
+        _num2 = double.parse(source);
+        _sumResult = _num1 + _num2;
+        _subResult = _num1 - _num2;
+        _multResult = _num1 * _num2;
+        _divResult = _num1 / _num2;
+      } catch (exc) {}
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,43 +68,21 @@ class _MainHomePageState extends State<MainHomePage> {
                 labelText: 'Number One',
               ),
               keyboardType: TextInputType.number,
-              onChanged: (source) {
-                try {
-                  num1 = double.parse(source);
-                } catch (exc) {
-                  num1 = 0.0;
-                }
-              },
+              onChanged: (source) => _setNum1(source),
             ),
             new TextField(
               decoration: InputDecoration(
                 labelText: 'Number Two',
               ),
               keyboardType: TextInputType.number,
-              onChanged: (source) {
-                try {
-                  num2 = double.parse(source);
-                } catch (exc) {
-                  num2 = 0.0;
-                }
-              },
+              onChanged: (source) => _setNum2(source),
             ),
-            new RaisedButton(
-              child: new Text('Calc'),
-              onPressed: () {
-                double sum = num1 + num2;
-                double sub = num1 - num2;
-                double mult = num1 * num2;
-                double div = num1 / num2;
-                showDialog(
-                  context: context,
-                  builder: (context) => new AlertDialog(
-                    title: new Text('Results'),
-                    content: new Text(
-                        'sum = $sum\nsub = $sub\nmult = $mult\ndiv = $div'),
-                  ),
-                );
-              },
+            new Text(
+              "sum = $_sumResult\nsub = $_subResult\nmult = $_multResult\ndiv = $_divResult",
+              style: new TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
             ),
           ],
         ),
