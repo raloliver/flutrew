@@ -34,7 +34,18 @@ class Flutrew extends StatelessWidget {
     );
 
     RaisedButton calcButton = new RaisedButton(
-      
+      child: new Text('Calc'),
+      onPressed: () {
+        double sum = num1 + num2;
+        double sub = num1 - num2;
+        double mult = num1 * num2;
+        double div = num1 / num2;
+        AlertDialog resultDialog = new AlertDialog(
+          content: Text('Results: sum = \$$sum - sub = \$$sub'),
+        );
+        showDialog(context: context, child: resultDialog);
+      },
     );
   }
 }
+F
