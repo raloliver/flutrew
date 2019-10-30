@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+//entrypoint (bootstrap application)
+void main() {
+  runApp(new MaterialApp(
+    title: 'Flutrew Calc',
+    home: new Flutrew(),
+    debugShowCheckedModeBanner: false,
+  ));
+}
+
 class Flutrew extends StatelessWidget {
   double num1 = 0.0;
   double num2 = 0.0;
@@ -21,7 +30,7 @@ class Flutrew extends StatelessWidget {
     );
     TextField secondNumInput = new TextField(
       decoration: InputDecoration(
-        labelText: 'Number One',
+        labelText: 'Number Two',
       ),
       keyboardType: TextInputType.number,
       onChanged: (source) {
@@ -41,7 +50,8 @@ class Flutrew extends StatelessWidget {
         double mult = num1 * num2;
         double div = num1 / num2;
         AlertDialog resultDialog = new AlertDialog(
-          content: Text('Results: sum = \$$sum - sub = \$$sub'),
+          content:
+              Text('Results: sum = $sum - sub = $sub - mult $mult - div $div'),
         );
         showDialog(context: context, child: resultDialog);
       },
@@ -53,5 +63,16 @@ class Flutrew extends StatelessWidget {
         children: <Widget>[firstNumInput, secondNumInput, calcButton],
       ),
     );
+
+    AppBar appBar = new AppBar(
+      title: new Text('Calc Flutrew'),
+    );
+
+    Scaffold scaffold = new Scaffold(
+      appBar: appBar,
+      body: container,
+    );
+
+    return scaffold;
   }
 }
